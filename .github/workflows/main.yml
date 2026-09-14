@@ -1,0 +1,31 @@
+name: BIST Bot Çalıştır
+
+on:
+  # Her gün saat 10:00'da (Türkiye saatiyle) çalışması için
+  # Not: GitHub UTC kullanır. Türkiye UTC+3'tür.
+  # Yani 10:00 TR = 07:00 UTC demektir.
+  schedule:
+    - cron: '0 7   *' 
+  
+  # Manuel tetikleme için de izin ver
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodları İndir
+        uses: actions/checkout@v3
+
+      - name: Python Kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Kütüphaneleri Yükle
+        run: |
+          pip install -r requirements.txt
+
+      - name: Botu Çalıştır
+        run: |
+          python main.py
