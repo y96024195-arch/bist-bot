@@ -1,12 +1,6 @@
-name: BIST Bot Çalıştır
-
 on:
-  # Her gün saat 10:00'da (Türkiye saatiyle) çalışması için
-  # Not: GitHub UTC kullanır. Türkiye UTC+3'tür.
-  # Yani 10:00 TR = 07:00 UTC demektir.
-   schedule:
-        - cron: '0 7   '
-  # Manuel tetikleme için de izin ver
+  schedule:
+    - cron: '0 7   *'
   workflow_dispatch:
 
 jobs:
